@@ -1,0 +1,4 @@
+Input 'make' command line.
+Launch binary with the argument.
+Example:
+./fdf test_maps/julia.fdf
