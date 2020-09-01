@@ -6,7 +6,7 @@
 #    By: ysushkov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/26 13:54:40 by ysushkov          #+#    #+#              #
-#    Updated: 2018/06/04 13:48:30 by ysushkov         ###   ########.fr        #
+#    Updated: 2018/07/12 20:36:18 by ysushkov         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -27,23 +27,23 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 
 OBJ = $(SRC:.c=.o)
 
-HEADER = libft.h
+HEADER = . # libft.h
 
 all: $(NAME)
 
-$(NAME):
-	gcc -Wall -Werror -Wextra -c $(SRC) -I $(HEADER)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME):	$(OBJ)
+	@cc -Wall -Werror -Wextra -c $(SRC) -I $(HEADER)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 $(OBJ): %.o: %.c
-		gcc -c $< -o $@ -Wall -Werror -Wextra
+		cc -c -Wall -Werror -Wextra $< -o $@
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 

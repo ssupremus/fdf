@@ -46,7 +46,7 @@ void	happy_colors(t_map *map, int key)
 	int			color;
 
 	y = -1;
-	if (key == 49)
+	if (key == KEY_SPACE)
 	{
 		if (q == 9)
 			q = 0;
@@ -61,7 +61,7 @@ void	happy_colors(t_map *map, int key)
 		}
 		q++;
 	}
-	else if (key == 35)
+	else if (key == KEY_P)
 		physics(map);
 }
 
@@ -94,53 +94,55 @@ void	physics(t_map *map)
 
 void	key_enlarge(int key, t_map *param)
 {
-	if (key == 13 && param->scale < 10000)
+	if (key == KEY_W && param->scale < 10000)
 	{
 		param->scale++;
 		param->startx -= (param->x / 2);
 		param->starty -= (param->y / 2);
 	}
-	if (key == 1 && param->scale > 1)
+	if (key == KEY_S && param->scale > 1)
 	{
 		param->scale--;
 		param->startx = param->startx + (param->x / 2);
 		param->starty = param->starty + (param->y / 2);
 	}
-	if (key == 24)
+	if (key == KEY_PLUS)
 		param->height += 2;
-	if (key == 27)
+	if (key == KEY_MINUS)
 		param->height -= 2;
-	if (key == 126)
+	if (key == KEY_UP)
 		param->starty -= 20;
-	if (key == 125)
+	if (key == KEY_DOWN)
 		param->starty += 20;
-	if (key == 123 || key == 0)
+	if (key == KEY_LEFT || key == KEY_A)
 		param->startx -= 20;
-	if (key == 124 || key == 2)
+	if (key == KEY_RIGHT || key == KEY_D)
 		param->startx += 20;
 }
 
 int		deal_key(int key, t_map *param)
 {
-	if (key == 53 || key == 36)
+	ft_putnbr(key);
+	ft_putendl("");
+	if (key == KEY_ESC || key == KEY_ENTER)
 	{
 		param = NULL;
 		exit(1);
 		return (0);
 	}
-	else if (key == 17)
+	else if (key == KEY_T)
 		param->a = param->a + 0.1;
-	else if (key == 5)
+	else if (key == KEY_G)
 		param->a = param->a - 0.1;
-	else if (key == 16)
+	else if (key == KEY_Y)
 		param->b = param->b + 0.1;
-	else if (key == 4)
+	else if (key == KEY_H)
 		param->b = param->b - 0.1;
-	else if (key == 32 || key == 14)
+	else if (key == KEY_U || key == 14)
 		param->c = param->c + 0.1;
-	else if (key == 38 || key == 12)
+	else if (key == KEY_J || key == 12)
 		param->c = param->c - 0.1;
-	else if (key == 35 || key == 49)
+	else if (key == KEY_P || key == KEY_SPACE)
 		happy_colors(param, key);
 	else
 		key_enlarge(key, param);
