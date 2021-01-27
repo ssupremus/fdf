@@ -122,8 +122,6 @@ void	key_enlarge(int key, t_map *param)
 
 int		deal_key(int key, t_map *param)
 {
-	ft_putnbr(key);
-	ft_putendl("");
 	if (key == KEY_ESC || key == KEY_ENTER)
 	{
 		param = NULL;
